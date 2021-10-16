@@ -27,27 +27,9 @@ public class StackADTTest {
 	}
 	
 	@Test
-	void testIsEmpty() 
+	void testCreate()
 	{
-		assertTrue(this.myStack.isEmpty());
-		assertEquals(0, this.myStack.size());
-	}
-	
-	@Test
-	void testSize()
-	{
-		assertEquals(0, this.myStack.size());
-		this.myStack.push("a");
-		this.myStack.push("b");
-		assertEquals(2, this.myStack.size());
-	}
-	
-	@Test
-	void testClear()
-	{
-		this.myStack.push("a");
-		this.myStack.push("b");
-		this.myStack.clear();
+		this.myStack.create();
 		assertTrue(this.myStack.isEmpty());
 		assertEquals(0, this.myStack.size());
 	}
@@ -113,6 +95,32 @@ public class StackADTTest {
 	}
 	
 	@Test
+	void testSize()
+	{
+		assertEquals(0, this.myStack.size());
+		this.myStack.push("a");
+		this.myStack.push("b");
+		assertEquals(2, this.myStack.size());
+	}
+
+	@Test
+	void testIsEmpty() 
+	{
+		assertTrue(this.myStack.isEmpty());
+		assertEquals(0, this.myStack.size());
+	}
+	
+	@Test
+	void testClear()
+	{
+		this.myStack.push("a");
+		this.myStack.push("b");
+		this.myStack.clear();
+		assertTrue(this.myStack.isEmpty());
+		assertEquals(0, this.myStack.size());
+	}
+	
+	@Test
 	void contains()
 	{
 		this.myStack.push("a");
@@ -123,5 +131,4 @@ public class StackADTTest {
 		assertTrue(this.myStack.contains("a"));
 		assertFalse(this.myStack.contains("x"));
 	}
-	
 }

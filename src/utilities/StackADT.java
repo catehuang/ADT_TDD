@@ -91,9 +91,6 @@ public interface StackADT<E> {
 	public void clear();
 	
 	
-
-	
-	
 	/**
 	 * Returns true if this stack contains specified obj
 	 * @param obj the searched element
