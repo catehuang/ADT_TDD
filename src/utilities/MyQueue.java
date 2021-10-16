@@ -1,15 +1,39 @@
 package utilities;
 
-public class MyQueue implements QueueADT {
+public class MyQueue<E> implements QueueADT<E> {
 
 	@Override
-	public boolean equals(QueueADT queue) {
+	public void create() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enqueue(E element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public E dequeue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E peek() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean equals(QueueADT<E> that) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Iterator iterator() {
+	public Iterator<E> iterator() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -21,7 +45,7 @@ public class MyQueue implements QueueADT {
 	}
 
 	@Override
-	public Object[] toArray(Object[] copy) {
+	public E[] toArray(E[] copy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -49,5 +73,5 @@ public class MyQueue implements QueueADT {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 }

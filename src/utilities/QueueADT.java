@@ -1,16 +1,41 @@
 package utilities;
 
 /**
- * Requirements (from M5-StacksQueues page 19, )
+ * Requirements (from M5-StacksQueues page 19, 23)
  */
 public interface QueueADT<E> {
+	
+	/**
+	 * creates an empty queue
+	 */
+	public void create();
+	
+	/**
+	 * Adds one element to the rear of this queue
+	 * @param element the element to be added to the rear of the queue
+	 */
+	public void enqueue(E element);
+	
+	
+	/**
+	 * Removes and returns the element at the front of this queue
+	 * @return the element at the front of this queue
+	 */
+	public E dequeue();
+	
+	
+	/**
+	 * Returns the element at the front of this queue
+	 * @return returns the element at the front of this queue
+	 */
+	public E peek();
 
 	/**
 	 * Returns true if two queues contain equal items appearing in the same order
 	 * @param queue compared queue
 	 * @return returns true if two queues contain equal items appearing in the same order
 	 */
-	public boolean equals(QueueADT<E> queue); 
+	public boolean equals(QueueADT<E> that); 
 	
 	
 	/**
@@ -60,5 +85,6 @@ public interface QueueADT<E> {
 	 * Clear all elements of this queue
 	 */
 	public void dequeueAll();
-
+	
+	
 }

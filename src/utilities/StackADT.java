@@ -5,23 +5,11 @@ package utilities;
  */
 public interface StackADT<E> {
 	
-	/**
-	 * Returns true if this stack is empty
-	 * @return true if this stack is empty
-	 */
-	boolean isEmpty();
-	
 	
 	/**
-	 * Returns the number of elements in this stack
-	 * @return the number of elements in this stack
+	 * creates an empty stack
 	 */
-	public int size();
-	
-	/**
-	 * Clear all elements of this stack
-	 */
-	public void clear();
+	public void create();
 	
 	
 	/**
@@ -50,7 +38,7 @@ public interface StackADT<E> {
 	 * @param E a stack to compare to another stack
 	 * @return returns true if two stack must contain equal items appearing in the same order
 	 */
-	boolean equals(StackADT<E> E);
+	boolean equals(StackADT<E> that);
 	
 	
 	/**
@@ -81,6 +69,29 @@ public interface StackADT<E> {
 	 * @return the index of obj
 	 */
 	int search(E obj);
+	
+	
+	/**
+	 * Returns the number of elements in this stack
+	 * @return the number of elements in this stack
+	 */
+	public int size();	
+	
+	
+	/**
+	 * Returns true if this stack is empty
+	 * @return true if this stack is empty
+	 */
+	boolean isEmpty();
+	
+	
+	/**
+	 * Clear all elements of this stack
+	 */
+	public void clear();
+	
+	
+
 	
 	
 	/**
