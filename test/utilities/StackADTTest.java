@@ -1,8 +1,11 @@
-package problemdomain;
+package utilities;
+
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import utilities.MyStack;
 
 public class StackADTTest {
 

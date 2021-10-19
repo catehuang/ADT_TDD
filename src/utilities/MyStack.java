@@ -2,6 +2,7 @@ package utilities;
 
 public class MyStack<E> implements StackADT<E> {
 
+	
 	@Override
 	public void create() {
 		// TODO Auto-generated method stub

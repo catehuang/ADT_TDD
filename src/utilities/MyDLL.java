@@ -3,7 +3,9 @@ package utilities;
 public class MyDLL<E> implements ListADT<E>
 {
 
-	private MyDLLNode<E> head, tail;
+	private MyDLLNode<E> head;
+	private MyDLLNode<E> tail;
+	private int size;
 	
 	public MyDLL()
 	{
@@ -90,9 +92,25 @@ public class MyDLL<E> implements ListADT<E>
 
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return iterator;
 	}
 
 
+	//inner class
+	private class Iterator<E> implements Iterator<E>
+	{
+	        
+		@Override
+	    public boolean hasNext()
+	    {
+	            
+	        return false;
+	    }
+
+	    @Override
+	    public E next() throws NoSuchElementException
+	    {
+	            
+	    }
+	}
 }
