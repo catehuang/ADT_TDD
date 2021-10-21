@@ -1,5 +1,8 @@
 package utilities;
 
+import adts.Iterator;
+import adts.QueueADT;
+
 public class MyQueue<E> implements QueueADT<E> {
 
 	@Override

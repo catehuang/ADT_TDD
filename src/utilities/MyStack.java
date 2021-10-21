@@ -1,5 +1,8 @@
 package utilities;
 
+import adts.Iterator;
+import adts.StackADT;
+
 public class MyStack<E> implements StackADT<E> {
 
 	

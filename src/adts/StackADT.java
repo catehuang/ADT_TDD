@@ -1,4 +1,4 @@
-package utilities;
+package adts;
 
 /**
  * Requirements (from M5-StacksQueues page 3, 10)

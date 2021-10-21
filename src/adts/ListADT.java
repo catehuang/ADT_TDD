@@ -1,4 +1,4 @@
-package utilities;
+package adts;
 
 import java.io.Serializable;
 

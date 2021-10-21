@@ -1,5 +1,10 @@
 package utilities;
 
+import java.util.NoSuchElementException;
+
+import adts.Iterator;
+import adts.ListADT;
+
 /**
 A class that implements a list of objects by using an array.
 Entries in a list have positions that begin with 1.
@@ -8,84 +13,71 @@ Template provided by Mohamed Elmenshawy
 */
 public class MyArrayList <E> implements ListADT<E>{
     
-    private E[] list;   // Array of list entries; ignore list[0]
-    private int numberOfEntries; 	//size
+    private int size; 	//size
     private static final int DEFAULT_CAPACITY = 25;
-    private int capacity = DEFAULT_CAPACITY;
+    //private int list.length = DEFAULT_CAPACITY;
+    private E[] list = (E[])new Object[DEFAULT_CAPACITY];
     
     public MyArrayList()
     {
-        E[] tempList = (E[])new Object[capacity];
-        list = tempList;
-        capacity = capacity;
-        numberOfEntries = 0;
+    	
     } // end default constructor
    
-    public MyArrayList(int initialCapacity)
+    public MyArrayList(int initial_capacity)
     {
-      // The cast is safe because the new array contains null entries
-      E[] tempList = (E[])new Object[initialCapacity];
-      list = tempList;
-      capacity = initialCapacity;
-      numberOfEntries = 0;
-      
-    } // end constructor
-
- 
+    	E[] list = (E[])new Object[DEFAULT_CAPACITY];
+    } 
+    
+    
     @Override
     public int size() {
-        return numberOfEntries;
+        return size;
     }
 
 	@Override
 	public void clear() 
 	{
-	    E[] tempList = (E[])new Object[capacity];
+	    E[] tempList = (E[])new Object[DEFAULT_CAPACITY];
 	    list = tempList;
-	    numberOfEntries = 0;
+	    size = 0;
 	}
 
 	@Override
 	public boolean add(int index, E toAdd) throws NullPointerException, IndexOutOfBoundsException 
 	{
-		if (index >= numberOfEntries || index < 0)
+		if (index > size || index < 0)
 		{
-			return false;
-			//throw new IndexOutOfBoundsException ("Index " + index + ", Size: " + numberOfEntries);
+			throw new IndexOutOfBoundsException ("Index " + index + ", Size: " + size);
 		}
 		
 		if (toAdd == null)
 		{
-			return false;
-			//throw new NullPointerException("Can not add a null value");
+			throw new NullPointerException("Can not add a null value");
 		}
 
-		ensureCapacity(numberOfEntries + 1);
+		ensureCapacity(size + 1);
 		
-		for (int i = numberOfEntries; i > index; i--)
+		for (int i = size; i > index; i--)
 		{
 			list[i] = list[i - 1];
 		}
 		
 		list[index] = toAdd;
-		numberOfEntries++;
+		size++;
 		return true;
 	}
 
     private void ensureCapacity(int requireSpace) 
     {
-		if (requireSpace > capacity)
+		if (requireSpace >= list.length)
 		{
 			E[] tempList = (E[])new Object[requireSpace];
-			for (int i = 0; i < numberOfEntries; i++)
+			for (int i = 0; i < size; i++)
 			{
 				tempList[i] = list[i];
 			}
-			
 			list = tempList;
-			capacity = requireSpace;
 		}
-		
 	} 
 
     @Override
@@ -93,22 +85,21 @@ public class MyArrayList <E> implements ListADT<E>{
     {
 		if (toAdd == null || toAdd.equals(""))
 		{
-			return false;
-			//throw new NullPointerException("Can not add a null value");
+			throw new NullPointerException("Can not add a null value");
 		}
 
-        if(numberOfEntries == 0)
+        if(size == 0)
         {
-        	list[numberOfEntries] = toAdd;
+        	list[size] = toAdd;
         }
         else
         {
-        	ensureCapacity(numberOfEntries + 1);
+        	ensureCapacity(size + 1);
         	
-        	list[numberOfEntries] = toAdd;
+        	list[size] = toAdd;
         }
     	
-        numberOfEntries++;
+        size++;
         return true;
     }
 
@@ -117,18 +108,17 @@ public class MyArrayList <E> implements ListADT<E>{
 	{
 		if (toAdd == null || toAdd.size() == 0)
 		{
-			return false;
-			//throw new NullPointerException("Can not add a null value");
+			throw new NullPointerException("Can not add a null value");
 		}
 		
-		ensureCapacity(numberOfEntries + toAdd.size());
+		ensureCapacity(size + toAdd.size());
 
 		for (int i = 0; i < toAdd.size(); i++)
 		{
-			list[numberOfEntries + i] = toAdd.get(i);
+			list[size + i] = toAdd.get(i);
 		}
 		
-		numberOfEntries = numberOfEntries + toAdd.size();
+		size = size + toAdd.size();
 		
 		return true;
     }
@@ -136,10 +126,9 @@ public class MyArrayList <E> implements ListADT<E>{
     @Override
     public E get(int index) throws IndexOutOfBoundsException 
     {
-		if (index < 0 || index >= numberOfEntries)
+		if (index < 0 || index >= size)
 		{
-			return null;
-			//throw new IndexOutOfBoundsException ("Index " + index + ", Size: " + numberOfEntries);
+			throw new IndexOutOfBoundsException ("Index " + index + ", Size: " + size);
 		}
 		
 		return list[index];
@@ -148,20 +137,19 @@ public class MyArrayList <E> implements ListADT<E>{
     @Override
     public E remove(int index) throws IndexOutOfBoundsException 
     {
-		if (index < 0 || index >= numberOfEntries)
+		if (index < 0 || index >= size)
 		{
-			return null;
-			//throw new IndexOutOfBoundsException ("Index " + index + ", Size: " + numberOfEntries);
+			throw new IndexOutOfBoundsException ("Index " + index + ", Size: " + size);
 		}
 		
 		E temp = list[index];
 		
-		for (int i = index; i < numberOfEntries - 1; i++ )
+		for (int i = index; i < size - 1; i++ )
 		{
 			list[i] = list[i + 1];
 		}
 		
-		numberOfEntries--;
+		size--;
 		return temp;
     }
 
@@ -171,11 +159,10 @@ public class MyArrayList <E> implements ListADT<E>{
     public E remove(E toRemove) throws NullPointerException {
 		if (toRemove == null)
 		{
-			return null;
-			//throw new NullPointerException("Can not add a null value");
+			throw new NullPointerException("Can not add a null value");
 		}
 		
-		for (int i = 0; i < numberOfEntries; i++)
+		for (int i = 0; i < size; i++)
 		{
 			if (list[i].equals(toRemove))
 			{
@@ -191,14 +178,12 @@ public class MyArrayList <E> implements ListADT<E>{
     public E set(int index, E toChange) throws NullPointerException, IndexOutOfBoundsException {
 		if (toChange == null)
 		{
-			return null;
-			//throw new NullPointerException("Can not add a null value");
+			throw new NullPointerException("Can not add a null value");
 		}
 		
-		if (index < 0 || index >= numberOfEntries)
+		if (index < 0 || index >= size)
 		{
-			return null;
-			//throw new IndexOutOfBoundsException ("Index " + index + ", Size: " + numberOfEntries);
+			throw new IndexOutOfBoundsException ("Index " + index + ", Size: " + size);
 		}
 		
 		list[index] = toChange;
@@ -209,7 +194,7 @@ public class MyArrayList <E> implements ListADT<E>{
  
     @Override
     public boolean isEmpty() {
-        return numberOfEntries == 0;
+        return size == 0;
     }
 
  
@@ -218,11 +203,10 @@ public class MyArrayList <E> implements ListADT<E>{
     public boolean contains(E toFind) throws NullPointerException {
 		if (toFind == null)
 		{
-			return false;
-			//throw new NullPointerException("Can not add a null value");
+			throw new NullPointerException("Can not add a null value");
 		}
 		
-		for (int i = 0; i < numberOfEntries; i++)
+		for (int i = 0; i < size; i++)
 		{
 			if (list[i].equals(toFind))
 			{
@@ -238,8 +222,7 @@ public class MyArrayList <E> implements ListADT<E>{
     public E[] toArray(E[] toHold) throws NullPointerException {
     	if (toHold == null)
 		{
-    		return null;
-			//throw new NullPointerException("Can not add a null value");
+			throw new NullPointerException("Can not add a null value");
 		}
 		
 		
@@ -250,8 +233,7 @@ public class MyArrayList <E> implements ListADT<E>{
 			list[i] = toHold[i];
 		}
 			
-		numberOfEntries = list.length;
-		capacity = toHold.length;
+		size = list.length;
 		
 		return list;
     }
@@ -264,9 +246,9 @@ public class MyArrayList <E> implements ListADT<E>{
 			return null;
 		}
 		
-		Object[] obj = new Object[numberOfEntries];
+		Object[] obj = new Object[size];
 		
-		for (int i = 0; i < numberOfEntries; i++)
+		for (int i = 0; i < size; i++)
 		{
 			obj[i] = list[i];
 		}
@@ -274,11 +256,27 @@ public class MyArrayList <E> implements ListADT<E>{
 		return obj;
     }
 
- 
-
     @Override
     public Iterator<E> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        
+        return new MyIterator();
+    }
+    
+    //inner class
+    private class MyIterator<E> implements adts.Iterator<E>
+    {
+    	private int current = 0;
+    	
+		@Override
+		public boolean hasNext() 
+		{
+			return current < size;
+		}
+
+		@Override
+		public E next() throws NoSuchElementException 
+		{
+			return (E) list[current++];
+		}
     }
 }
