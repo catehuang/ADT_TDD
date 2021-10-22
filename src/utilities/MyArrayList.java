@@ -13,7 +13,7 @@ Template provided by Mohamed Elmenshawy
 */
 public class MyArrayList <E> implements ListADT<E>{
     
-    private int size; 	//size
+    private int size = 0; 	//size
     private static final int DEFAULT_CAPACITY = 25;
     //private int list.length = DEFAULT_CAPACITY;
     private E[] list = (E[])new Object[DEFAULT_CAPACITY];

@@ -10,12 +10,18 @@ public class MyDLLNode<E> {
 	 * @param prev predecessor
 	 * @param next successor
 	 */
+	
+	
 	public MyDLLNode(E element, MyDLLNode<E> prev, MyDLLNode<E> next)
 	{
 		super();
 		this.element = element;
 		this.prev = prev;
 		this.next = next;
+	}
+
+	public MyDLLNode() {
+		super();
 	}
 
 	/**
