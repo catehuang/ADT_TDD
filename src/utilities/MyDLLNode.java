@@ -4,6 +4,10 @@ public class MyDLLNode<E> {
 	private E element;
 	private MyDLLNode<E> prev, next;
 
+	/**
+	 * Constructor for initiating MyDLLNode
+	 *
+	 */
 	public MyDLLNode() {
 
 	}
