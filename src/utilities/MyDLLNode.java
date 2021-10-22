@@ -3,6 +3,10 @@ package utilities;
 public class MyDLLNode<E> {
 	private E element;
 	private MyDLLNode<E> prev, next;
+
+	public MyDLLNode() {
+
+	}
 	
 	/**
 	 * Constructor for initiating a node with content and predesessor and successor
