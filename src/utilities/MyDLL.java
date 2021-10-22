@@ -53,7 +53,7 @@ public class MyDLL<E> implements ListADT<E>
 	@Override
 	public boolean add(int index, E toAdd) throws NullPointerException, IndexOutOfBoundsException 
 	{
-		if (toAdd == null)
+		if (toAdd == null || toAdd.equals(""))
 		{
 			throw new NullPointerException("Can not add a null value");
 		}
@@ -112,7 +112,7 @@ public class MyDLL<E> implements ListADT<E>
 	@Override
 	public boolean add(E toAdd) throws NullPointerException 
 	{
-		if (toAdd == null)
+		if (toAdd == null  || toAdd.equals(""))
 		{
 			throw new NullPointerException("Can not add a null value");
 		}
@@ -144,7 +144,7 @@ public class MyDLL<E> implements ListADT<E>
 	@Override
 	public boolean addAll(ListADT<? extends E> toAdd) throws NullPointerException 
 	{
-		if (toAdd == null)
+		if (toAdd == null  || toAdd.equals(""))
 		{
 			throw new NullPointerException("Can not add a null value");
 		}
@@ -269,7 +269,7 @@ public class MyDLL<E> implements ListADT<E>
 			return null;
 		} 
 		
-		if (toRemove == null)
+		if (toRemove == null  || toRemove.equals(""))
 		{
 			throw new NullPointerException("Can not add a null value");
 		}
@@ -301,7 +301,7 @@ public class MyDLL<E> implements ListADT<E>
 	@Override
 	public E set(int index, E toChange) throws NullPointerException, IndexOutOfBoundsException
 	{
-		if (toChange == null)
+		if (toChange == null || toChange.equals(""))
 		{
 			throw new NullPointerException("Can not add a null value");
 		}
@@ -338,7 +338,7 @@ public class MyDLL<E> implements ListADT<E>
 	@Override
 	public boolean contains(E toFind) throws NullPointerException 
 	{
-		if (toFind == null)
+		if (toFind == null || toFind.equals(""))
 		{
 			throw new NullPointerException("Can not add a null value");
 		}
@@ -367,7 +367,7 @@ public class MyDLL<E> implements ListADT<E>
 	@Override
 	public E[] toArray(E[] toHold) throws NullPointerException 
 	{
-		if (toHold == null)
+		if (toHold == null || toHold.equals(""))
 		{
 			throw new NullPointerException("Can not add a null value");
 		}
