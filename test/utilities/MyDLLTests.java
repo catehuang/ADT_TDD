@@ -5,10 +5,11 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
-import utilities.MyStack;
+import utilities.MyDLLNode;
 
-public class StackADTTest {
+public class MyDLLTests<E>  {
 
+	private MyDLLNode myDLLNode;
 	
 	/**
 	 * @throws Exception if something wrong when assign and initialize MyArrayList
@@ -16,6 +17,7 @@ public class StackADTTest {
 	@Before
 	void setUp() throws Exception
 	{
+		this.myDLLNode = new MyDLLNode();
 	}
 	
 	/**
@@ -24,6 +26,7 @@ public class StackADTTest {
 	@After
 	void tearDown() throws Exception
 	{
+
 	}
-	
+
 }

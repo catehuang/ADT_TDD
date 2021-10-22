@@ -5,10 +5,9 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
-import utilities.MyQueue;
+import utilities.MyStack;
 
-public class MyQueueTest {
-
+public class StackADTTests {
 
 	
 	/**
@@ -17,7 +16,6 @@ public class MyQueueTest {
 	@Before
 	void setUp() throws Exception
 	{
-
 	}
 	
 	/**
@@ -26,7 +24,6 @@ public class MyQueueTest {
 	@After
 	void tearDown() throws Exception
 	{
-
 	}
-
+	
 }

@@ -5,11 +5,11 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
-import utilities.MyDLLNode;
+import utilities.MyQueue;
 
-public class MyDLLNodeTest<E>  {
+public class MyQueueTests {
 
-	private MyDLLNode myDLLNode;
+
 	
 	/**
 	 * @throws Exception if something wrong when assign and initialize MyArrayList
@@ -17,7 +17,7 @@ public class MyDLLNodeTest<E>  {
 	@Before
 	void setUp() throws Exception
 	{
-		//test commit
+
 	}
 	
 	/**

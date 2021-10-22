@@ -16,17 +16,27 @@ public class MyDLL<E> implements ListADT<E>
 	private MyDLLNode<E> tail;
 	private int size = 0;
 	
+	/**
+	 * Default constructor to init DLL
+	 */
 	public MyDLL()
 	{
 		this.head = this.tail = null;
 	}
 
+	/**
+	 * Find out the size of this DLL
+	 * @return the number of nodes in this DDL
+	 */
 	@Override
 	public int size() 
 	{
 		return size;
 	}
 
+	/**
+	 * Clear all nodes
+	 */
 	@Override
 	public void clear() 
 	{
@@ -34,6 +44,12 @@ public class MyDLL<E> implements ListADT<E>
 		size = 0;
 	}
 
+	/**
+	 * Adds a node to a specified index
+	 * @param index a specified index to put the new node
+	 * @param toAdd the content of the new node would be
+	 * @return succede or failed to add the node
+	 */
 	@Override
 	public boolean add(int index, E toAdd) throws NullPointerException, IndexOutOfBoundsException 
 	{
@@ -88,6 +104,11 @@ public class MyDLL<E> implements ListADT<E>
 		return true;
 	}
 
+	/**
+	 * Adds a node to this DLL
+	 * @param toAdd the content of the new node would be
+	 * @return succede or failed to add the node
+	 */
 	@Override
 	public boolean add(E toAdd) throws NullPointerException 
 	{
@@ -115,13 +136,47 @@ public class MyDLL<E> implements ListADT<E>
 		return true;
 	}
 
+	/**
+	 * Adds all nodes in the toAdd to this DLL
+	 * @param toAdd those nodes to be added into DLL
+	 * @return true if add these nodes to DLL successfully
+	 */
 	@Override
 	public boolean addAll(ListADT<? extends E> toAdd) throws NullPointerException 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		if (toAdd == null)
+		{
+			throw new NullPointerException("Can not add a null value");
+		}
+		
+		for (int i = 0; i < toAdd.size(); i++)
+		{
+			MyDLLNode<E> newNode = new MyDLLNode(toAdd.get(i));
+			
+			if (isEmpty())
+			{
+				this.head = newNode;
+				this.tail = newNode;
+			}
+			else
+			{
+				// tail
+				tail.setNext(newNode);
+				newNode.setPrev(tail);
+				tail = newNode;
+			}
+			
+			size++;
+		}
+	
+		return true;
 	}
 
+	/**
+	 * Get the content at the specified index
+	 * @param index the specified index for visiting
+	 * @return the content at the index
+	 */
 	@Override
 	public E get(int index) throws IndexOutOfBoundsException 
 	{
@@ -145,6 +200,11 @@ public class MyDLL<E> implements ListADT<E>
 		return curr.getElement();
 	}
 
+	/**
+	 * Removes the node at the index
+	 * @param index the index of a node will be removed
+	 * @return the node successfully had been removed
+	 */
 	@Override
 	public E remove(int index) throws IndexOutOfBoundsException 
 	{
@@ -197,6 +257,11 @@ public class MyDLL<E> implements ListADT<E>
 		return removed.getElement();
 	}
 
+	/**
+	 * Removes the node with a specified content
+	 * @param toRemove spcified content of a node to be removed 
+	 * @return the node successfully had been removed
+	 */
 	@Override
 	public E remove(E toRemove) throws NullPointerException 
 	{
@@ -227,6 +292,12 @@ public class MyDLL<E> implements ListADT<E>
 		return remove(index);
 	}
 
+	/**
+	 * Replace the content of node at the specified index
+	 * @param index would be replaced index
+	 * @param toChange new content of node
+	 * @return the new content of node
+	 */
 	@Override
 	public E set(int index, E toChange) throws NullPointerException, IndexOutOfBoundsException
 	{
@@ -250,11 +321,20 @@ public class MyDLL<E> implements ListADT<E>
 		return curr.getElement();
 	}
 
+	/**
+	 * Checks if this DLL is empty
+	 * @return true if this DLL is empty
+	 */
 	@Override
 	public boolean isEmpty() {
 		return size == 0;
 	}
 
+	/**
+	 * Checks if this DLL contains a specific content of node
+	 * @param toFind a specific content of node
+	 * @return true if a specific content of node existed in this DLL
+	 */
 	@Override
 	public boolean contains(E toFind) throws NullPointerException 
 	{
@@ -267,7 +347,8 @@ public class MyDLL<E> implements ListADT<E>
 		
 		for (int i = 0; i < size; i++)
 		{
-			if (curr.getElement().equals(toFind)) {
+			if (curr.getElement().equals(toFind)) 
+			{
 				return true;
 			}
 			else
@@ -278,20 +359,61 @@ public class MyDLL<E> implements ListADT<E>
 		return false;
 	}
 
+	/**
+	 * Converts an array into array
+	 * @param toHold the array wanted to be converted
+	 * @return the converted array
+	 */
 	@Override
 	public E[] toArray(E[] toHold) throws NullPointerException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		if (toHold == null)
+		{
+			throw new NullPointerException("Can not add a null value");
+		}
+		
+		clear();
+		
+		E[] myDll = (E[])new Object[toHold.length];
+		
+		for (int i = 0; i < toHold.length; i++ )
+		{
+			myDll[i] = toHold[i];
+			size++;
+		}
+			
+		return myDll;
 	}
 
+	/**
+	 * Convert a DLL into object array
+	 * @return an object array converted from a DLL
+	 */
 	@Override
 	public Object[] toArray() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (isEmpty())
+		{
+			return null;
+		}
+		
+		Object[] obj = new Object[size];
+		
+		MyDLLNode<E> curr = head;
+		
+		for (int i = 0; i < size; i++)
+		{
+			obj[i] = curr.getElement();
+			curr = curr.getNext();
+		}
+		
+		return obj;
 	}
 
+	/**
+	 * Traverses a DLL in a particular order
+	 */
 	@Override
     public Iterator<E> iterator() {
         
