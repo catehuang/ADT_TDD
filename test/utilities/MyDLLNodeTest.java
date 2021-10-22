@@ -3,97 +3,30 @@ package utilities;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import org.junit.*;
 
 import utilities.MyDLLNode;
 
-public class MyDLLNodeTest {
+public class MyDLLNodeTest<E>  {
 
 	private MyDLLNode myDLLNode;
 	
 	/**
 	 * @throws Exception if something wrong when assign and initialize MyArrayList
 	 */
-	@BeforeEach
+	@Before
 	void setUp() throws Exception
 	{
-		this.myDLLNode = new MyDLLNode();
+
 	}
 	
 	/**
 	 * @throws Exception if clear method is failed
 	 */
-	@AfterEach
+	@After
 	void tearDown() throws Exception
 	{
-		this.myDLLNode.clear();
-	}
-	
 
-	@Test
-	void testSize()
-	{
-		
-	}
-	
-	@Test
-	void testClear()
-	{
-		
-	}
-	
-	@Test
-	void testAdd()
-	{
-		
-	}
-	
-	@Test
-	void testAddAll()
-	{
-		
-	}
-	
-	@Test
-	void testGet()
-	{
-		
-	}
-	
-	@Test
-	void testRemove()
-	{
-		
-	}
-	
-	@Test
-	void testSet()
-	{
-		
-	}
-	
-	@Test
-	void testIsEmpty()
-	{
-		assertTrue(this.myArrayList.isEmpty());
-		assertEquals(0, this.myArrayList.size());
-	}
-	
-	@Test
-	void testContains() {
-		
-	}
-	
-	@Test
-	void testToArray()
-	{
-		
-	}
-	
-	@Test
-	void testIterator()
-	{
-		
 	}
 
 }
