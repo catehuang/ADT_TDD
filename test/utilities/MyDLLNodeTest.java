@@ -17,7 +17,7 @@ public class MyDLLNodeTest<E>  {
 	@Before
 	void setUp() throws Exception
 	{
-
+		//test commit
 	}
 	
 	/**
