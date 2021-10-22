@@ -386,7 +386,7 @@ public class MyDLL<E> implements ListADT<E>
 	}
 
 	/**
-	 * Convert DLL into object array
+	 * Convert a DLL into object array
 	 * @return an object array converted from a DLL
 	 */
 	@Override
@@ -412,7 +412,7 @@ public class MyDLL<E> implements ListADT<E>
 	}
 
 	/**
-	 * Traversing a DLL in a particular order
+	 * Traverses a DLL in a particular order
 	 */
 	@Override
     public Iterator<E> iterator() {

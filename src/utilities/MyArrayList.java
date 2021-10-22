@@ -18,22 +18,36 @@ public class MyArrayList <E> implements ListADT<E>{
     //private int list.length = DEFAULT_CAPACITY;
     private E[] list = (E[])new Object[DEFAULT_CAPACITY];
     
+    /**
+     * Default constructor
+     */
     public MyArrayList()
     {
     	
     } // end default constructor
    
+    
+    /**
+     * Initial an array with a specified capacity
+     * @param initial_capacity the capacity of an array
+     */
     public MyArrayList(int initial_capacity)
     {
     	E[] list = (E[])new Object[DEFAULT_CAPACITY];
     } 
     
     
+    /**
+     * Returns the size of the array
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Clears the content of array
+     */
 	@Override
 	public void clear() 
 	{
@@ -42,6 +56,10 @@ public class MyArrayList <E> implements ListADT<E>{
 	    size = 0;
 	}
 
+	
+	/**
+	 * Adds an element at the specified index
+	 */
 	@Override
 	public boolean add(int index, E toAdd) throws NullPointerException, IndexOutOfBoundsException 
 	{
@@ -67,6 +85,11 @@ public class MyArrayList <E> implements ListADT<E>{
 		return true;
 	}
 
+	
+	/**
+	 * Makes sure that the capacity of array is enough
+	 * @param requireSpace required space for an array
+	 */
     private void ensureCapacity(int requireSpace) 
     {
 		if (requireSpace >= list.length)
@@ -79,7 +102,11 @@ public class MyArrayList <E> implements ListADT<E>{
 			list = tempList;
 		}
 	} 
+    
 
+    /**
+     * Adds an element to array
+     */
     @Override
     public boolean add(E toAdd) throws NullPointerException 
     {
@@ -103,6 +130,10 @@ public class MyArrayList <E> implements ListADT<E>{
         return true;
     }
 
+    
+    /**
+     * Adds more than one elements into array at one time
+     */
 	@Override
     public boolean addAll(ListADT<? extends E> toAdd) throws NullPointerException 
 	{
@@ -123,6 +154,10 @@ public class MyArrayList <E> implements ListADT<E>{
 		return true;
     }
 
+	
+	/**
+	 * Get the content of the specified index
+	 */
     @Override
     public E get(int index) throws IndexOutOfBoundsException 
     {
@@ -133,7 +168,11 @@ public class MyArrayList <E> implements ListADT<E>{
 		
 		return list[index];
     }
+    
 
+    /**
+     * Removes the element at the specified index
+     */
     @Override
     public E remove(int index) throws IndexOutOfBoundsException 
     {
@@ -158,8 +197,10 @@ public class MyArrayList <E> implements ListADT<E>{
 		return temp;
     }
 
- 
-
+    
+	/**
+	 * Removes the specified content of element
+	 */
     @Override
     public E remove(E toRemove) throws NullPointerException {
 		if (toRemove == null)
@@ -179,6 +220,9 @@ public class MyArrayList <E> implements ListADT<E>{
     }
 
  
+    /**
+     * Replace the content at the specified index
+     */
     @Override
     public E set(int index, E toChange) throws NullPointerException, IndexOutOfBoundsException {
 		if (toChange == null)
@@ -197,13 +241,18 @@ public class MyArrayList <E> implements ListADT<E>{
     }
 
  
+    /**
+     * Checks if the array is empty
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
  
-
+    /**
+     * Examines if a specified content exists in an array 
+     */
     @Override
     public boolean contains(E toFind) throws NullPointerException {
 		if (toFind == null)
@@ -223,6 +272,9 @@ public class MyArrayList <E> implements ListADT<E>{
     }
 
  
+    /**
+     * Converts an array into array
+     */
     @Override
     public E[] toArray(E[] toHold) throws NullPointerException {
     	if (toHold == null)
@@ -244,6 +296,9 @@ public class MyArrayList <E> implements ListADT<E>{
     }
 
 
+    /**
+     * Convert an array into object array
+     */
     @Override
     public Object[] toArray() {
 		if (isEmpty())
@@ -261,6 +316,10 @@ public class MyArrayList <E> implements ListADT<E>{
 		return obj;
     }
 
+    
+    /**
+     *  Traverses a DLL in a particular order
+     */
     @Override
     public Iterator<E> iterator() {
         
