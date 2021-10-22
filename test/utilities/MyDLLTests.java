@@ -17,7 +17,7 @@ public class MyDLLTests<E>  {
 	@Before
 	void setUp() throws Exception
 	{
-		this.myDLLNode = new MyDLLNode();
+		//this.myDLLNode = new MyDLLNode();
 	}
 	
 	/**

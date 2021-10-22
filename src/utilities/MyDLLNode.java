@@ -5,14 +5,6 @@ public class MyDLLNode<E> {
 	private MyDLLNode<E> prev, next;
 
 	/**
-	 * Constructor for initiating MyDLLNode
-	 *
-	 */
-	public MyDLLNode() {
-
-	}
-	
-	/**
 	 * Constructor for initiating a node with content and predesessor and successor
 	 * @param element the content of node
 	 * @param prev predecessor
