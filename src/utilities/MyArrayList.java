@@ -246,7 +246,7 @@ public class MyArrayList <E> implements ListADT<E>{
 
     @Override
     public Object[] toArray() {
-		if (list == null)
+		if (isEmpty())
 		{
 			return null;
 		}

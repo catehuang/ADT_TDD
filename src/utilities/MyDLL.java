@@ -118,8 +118,32 @@ public class MyDLL<E> implements ListADT<E>
 	@Override
 	public boolean addAll(ListADT<? extends E> toAdd) throws NullPointerException 
 	{
-		// TODO Auto-generated method stub
-		return false;
+		if (toAdd == null)
+		{
+			throw new NullPointerException("Can not add a null value");
+		}
+		
+		for (int i = 0; i < toAdd.size(); i++)
+		{
+			MyDLLNode<E> newNode = new MyDLLNode(toAdd.get(i));
+			
+			if (isEmpty())
+			{
+				this.head = newNode;
+				this.tail = newNode;
+			}
+			else
+			{
+				// tail
+				tail.setNext(newNode);
+				newNode.setPrev(tail);
+				tail = newNode;
+			}
+			
+			size++;
+		}
+	
+		return true;
 	}
 
 	@Override
@@ -267,7 +291,8 @@ public class MyDLL<E> implements ListADT<E>
 		
 		for (int i = 0; i < size; i++)
 		{
-			if (curr.getElement().equals(toFind)) {
+			if (curr.getElement().equals(toFind)) 
+			{
 				return true;
 			}
 			else
@@ -281,15 +306,44 @@ public class MyDLL<E> implements ListADT<E>
 	@Override
 	public E[] toArray(E[] toHold) throws NullPointerException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		if (toHold == null)
+		{
+			throw new NullPointerException("Can not add a null value");
+		}
+		
+		clear();
+		
+		E[] myDll = (E[])new Object[toHold.length];
+		
+		for (int i = 0; i < toHold.length; i++ )
+		{
+			myDll[i] = toHold[i];
+			size++;
+		}
+			
+		return myDll;
 	}
 
 	@Override
 	public Object[] toArray() 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (isEmpty())
+		{
+			return null;
+		}
+		
+		Object[] obj = new Object[size];
+		
+		MyDLLNode<E> curr = head;
+		
+		for (int i = 0; i < size; i++)
+		{
+			obj[i] = curr.getElement();
+			curr = curr.getNext();
+		}
+		
+		return obj;
 	}
 
 	@Override
