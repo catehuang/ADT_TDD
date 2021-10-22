@@ -7,7 +7,7 @@ import org.junit.*;
 
 import utilities.MyStack;
 
-public class StackADTTest {
+public class StackADTTests {
 
 	
 	/**

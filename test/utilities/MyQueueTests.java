@@ -7,7 +7,7 @@ import org.junit.*;
 
 import utilities.MyQueue;
 
-public class MyQueueTest {
+public class MyQueueTests {
 
 
 	

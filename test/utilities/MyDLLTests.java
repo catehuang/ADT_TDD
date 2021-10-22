@@ -7,7 +7,7 @@ import org.junit.*;
 
 import utilities.MyDLLNode;
 
-public class MyDLLNodeTest<E>  {
+public class MyDLLTests<E>  {
 
 	private MyDLLNode myDLLNode;
 	
@@ -17,7 +17,7 @@ public class MyDLLNodeTest<E>  {
 	@Before
 	void setUp() throws Exception
 	{
-
+		this.myDLLNode = new MyDLLNode();
 	}
 	
 	/**
