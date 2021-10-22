@@ -361,11 +361,14 @@ public class MyDLL<E> implements ListADT<E>
 		
 		clear();
 		
-		E[] myDll = (E[])new Object[toHold.length];
+		E[] myDll = (E[]) new Object[toHold.length];
 		
-		for (int i = 0; i < toHold.length; i++ )
+		MyDLLNode<E> curr = head;
+		
+		for (int i = 0; i < size; i++)
 		{
-			myDll[i] = toHold[i];
+			myDll[i] = curr.getElement();
+			curr = curr.getNext();
 			size++;
 		}
 			

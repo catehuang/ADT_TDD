@@ -29,6 +29,13 @@ public class MyDLLNode<E> {
 		this.next = null;
 	}
 
+	public MyDLLNode() {
+		super();
+		this.element = null;
+		this.prev = null;
+		this.next = null;
+	}
+
 	/**
 	 * Get the content of a node
 	 * @return the content of a node
