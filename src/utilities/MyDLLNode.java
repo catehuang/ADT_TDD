@@ -3,7 +3,7 @@ package utilities;
 public class MyDLLNode<E> {
 	private E element;
 	private MyDLLNode<E> prev, next;
-	
+
 	/**
 	 * Constructor for initiating a node with content and predesessor and successor
 	 * @param element the content of node
