@@ -150,6 +150,11 @@ public class MyArrayList <E> implements ListADT<E>{
 		}
 		
 		size--;
+		
+		if (size == 0)
+		{
+			clear(); 
+		}
 		return temp;
     }
 
