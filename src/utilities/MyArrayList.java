@@ -147,6 +147,7 @@ public class MyArrayList <E> implements ListADT<E>{
 		for (int i = 0; i < toAdd.size(); i++)
 		{
 			list[size + i] = toAdd.get(i);
+			
 		}
 		
 		size = size + toAdd.size();

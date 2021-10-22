@@ -149,24 +149,11 @@ public class MyDLL<E> implements ListADT<E>
 			throw new NullPointerException("Can not add a null value");
 		}
 		
-		for (int i = 0; i < toAdd.size(); i++)
+		int size_of_toAdd = toAdd.size(); //triky one
+		for (int i = 0; i < size_of_toAdd; i++)
 		{
 			MyDLLNode<E> newNode = new MyDLLNode(toAdd.get(i));
-			
-			if (isEmpty())
-			{
-				this.head = newNode;
-				this.tail = newNode;
-			}
-			else
-			{
-				// tail
-				tail.setNext(newNode);
-				newNode.setPrev(tail);
-				tail = newNode;
-			}
-			
-			size++;
+			add(newNode.getElement());
 		}
 	
 		return true;
