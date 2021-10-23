@@ -37,7 +37,6 @@ public class MyStack<E> implements StackADT<E> {
 	@Override
 	public void create() {
 		new MyStack();
-
 	}
 
 	/**
@@ -63,12 +62,10 @@ public class MyStack<E> implements StackADT<E> {
 	 * 
 	 * @param toAdd the element to be added to the top of stack
 	 * @throws NullPointerException If the specified element is <code>null</code>
-	 *                              and the list implementation does not support
-	 *                              having <code>null</code> elements.
 	 */
 	@Override
 	public void push(E element) throws NullPointerException {
-		if(element == null)
+		if (element == null)
 			throw new NullPointerException();
 		if (top == arrayStack.length) {
 			// need to resize the backing array
@@ -77,17 +74,17 @@ public class MyStack<E> implements StackADT<E> {
 		arrayStack[top] = (E) element;
 		top++;
 
-		
 	}
 
 	/**
 	 * Returns the top element and removes it from this stack
 	 * 
 	 * @return the top element from this stack
+	 * @throws EmptyStackException If the stack is empty
 	 */
 
 	@Override
-	public E pop() {
+	public E pop() throws EmptyStackException {
 		if (isEmpty()) {
 			throw new EmptyStackException();
 		}
@@ -102,9 +99,10 @@ public class MyStack<E> implements StackADT<E> {
 	 * Returns the top element of this stack
 	 * 
 	 * @return the element on the top of this stack
+	 * @throws EmptyStackException If the stack is empty
 	 */
 	@Override
-	public E peek() {
+	public E peek() throws EmptyStackException {
 		if (isEmpty()) {
 			throw new EmptyStackException();
 		}
@@ -116,9 +114,17 @@ public class MyStack<E> implements StackADT<E> {
 	 * 
 	 * @param obj the searched element
 	 * @return the index of obj
+	 * @throws NullPointerException If the specified element is <code>null</code>
+	 * @throws EmptyStackException  If the stack is empty
 	 */
 	@Override
-	public int search(E obj) {
+	public int search(E obj) throws NullPointerException, EmptyStackException {
+		if (isEmpty()) {
+			throw new EmptyStackException();
+		}
+		if (obj == null) {
+			throw new NullPointerException();
+		}
 		for (int i = top - 1; i >= 0; i--) {
 			if (arrayStack[i].equals(obj))
 				return i;
@@ -131,10 +137,18 @@ public class MyStack<E> implements StackADT<E> {
 	 * 
 	 * @param obj the searched element
 	 * @return returns true if this stack contains specified obj
+	 * @throws NullPointerException If the specified element is <code>null</code>
+	 * @throws EmptyStackException  If the stack is empty
 	 */
 
 	@Override
-	public boolean contains(E obj) {
+	public boolean contains(E obj) throws NullPointerException, EmptyStackException {
+		if (isEmpty()) {
+			throw new EmptyStackException();
+		}
+		if (obj == null) {
+			throw new NullPointerException();
+		}
 		for (int i = top - 1; i >= 0; i--) {
 			if (arrayStack[i].equals(obj))
 				return true;
@@ -157,6 +171,7 @@ public class MyStack<E> implements StackADT<E> {
 	 * 
 	 * @param toHold an array is going to make a copy
 	 * @return returns an array containing all of the items in this stack
+	 * @throws NullPointerException If the specified element is <code>null</code>
 	 */
 	@Override
 	public E[] toArray(E[] toHold) throws NullPointerException {
@@ -178,6 +193,9 @@ public class MyStack<E> implements StackADT<E> {
 	 */
 	@Override
 	public Object[] toArray() {
+		if (isEmpty()) {
+			return null;
+		}
 		Object[] o = new Object[arrayStack.length];
 		for (int i = 0; i < arrayStack.length; i++) {
 			o[i] = arrayStack[i];
@@ -237,7 +255,5 @@ public class MyStack<E> implements StackADT<E> {
 		} else
 			return false;
 	}
-
-
 
 }

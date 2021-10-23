@@ -1,5 +1,7 @@
 package adts;
 
+import utilities.MyStack;
+
 /**
  * Requirements (from M5-StacksQueues page 3, 10)
  */
@@ -8,6 +10,7 @@ public interface StackADT<E> {
 	
 	/**
 	 * creates an empty stack
+	 * @return 
 	 */
 	public void create();
 	
