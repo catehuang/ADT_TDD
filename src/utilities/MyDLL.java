@@ -12,8 +12,8 @@ import adts.ListADT;
  */
 public class MyDLL<E> implements ListADT<E>
 {
-	private MyDLLNode<E> head;
-	private MyDLLNode<E> tail;
+	private MyDLLNode head;
+	private MyDLLNode tail;
 	private int size = 0;
 	
 	/**
@@ -94,6 +94,7 @@ public class MyDLL<E> implements ListADT<E>
 			{
 				curr = curr.getNext();
 			}
+			
 			curr.getPrev().setNext(newNode);
 			newNode.setPrev(curr.getPrev());
 			curr.setPrev(newNode);
@@ -119,13 +120,13 @@ public class MyDLL<E> implements ListADT<E>
 		
 		MyDLLNode<E> newNode = new MyDLLNode(toAdd);
 		
-		if (isEmpty())
+		if (head == null)
 		{
 			this.head = newNode;
 			this.tail = newNode;
 		}
 		else
-		{
+		{	
 			// tail
 			tail.setNext(newNode);
 			newNode.setPrev(tail);
@@ -211,7 +212,7 @@ public class MyDLL<E> implements ListADT<E>
 			removed = removed.getNext();
 		}
 		
-		if (size == 1 && index == size - 1) 
+		if (size == 1) 
 		{
 			head = tail = null;
 		} 
@@ -363,15 +364,19 @@ public class MyDLL<E> implements ListADT<E>
 		
 		E[] myDll = (E[]) new Object[toHold.length];
 		
+		for (int i = 0; i < toHold.length; i++)
+		{
+			add(toHold[i]);
+		}
+		
 		MyDLLNode<E> curr = head;
 		
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < toHold.length; i++)
 		{
-			myDll[i] = curr.getElement();
+			myDll[i] =  curr.getElement();
 			curr = curr.getNext();
-			size++;
 		}
-			
+		
 		return myDll;
 	}
 
@@ -413,18 +418,20 @@ public class MyDLL<E> implements ListADT<E>
     //inner class
     private class MyIterator<E> implements adts.Iterator<E>
     {
-    	private int current = 0;
+    	private MyDLLNode curr = head;
     	
 		@Override
 		public boolean hasNext() 
 		{
-			return current < size;
+			return curr.getNext() != null;
 		}
 
 		@Override
 		public E next() throws NoSuchElementException 
 		{
-			return (E) tail.getNext();
+			E info = (E) curr.getElement();
+			tail = curr.getNext();
+			return info;
 		}
     }
 }

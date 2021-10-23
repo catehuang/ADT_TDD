@@ -42,7 +42,14 @@ public class MyQueue<E> implements QueueADT<E>
 	 */
 	@Override
 	public E peek() {
-		return (E) myDll.get(0);
+		if (isEmpty())
+		{
+			return null;
+		}
+		else
+		{
+			return (E) myDll.get(0);
+		}	
 	}
 
 	/**
@@ -50,8 +57,27 @@ public class MyQueue<E> implements QueueADT<E>
 	 */
 	@Override
 	public boolean equals(QueueADT<E> that) {
-		// TODO Auto-generated method stub
-		return false;
+		Object[] array1 = new Object[that.size()];
+		array1 = that.toArray();
+
+		Object[] array2 = new Object[myDll.size()];
+		array2 = myDll.toArray();
+		
+		if (that.size() != myDll.size())
+		{
+			return false;
+		}
+		
+		for (int i = 0; i < myDll.size(); i++)
+		{
+			System.out.println(array1[i] + " vs. " + array2[i]);
+			if (! array1[i].equals(array2[i]))
+			{
+				return false;
+			}
+		}
+		
+		return true;
 	}
 
 	/**

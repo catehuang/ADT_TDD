@@ -14,9 +14,9 @@ Template provided by Mohamed Elmenshawy
 public class MyArrayList <E> implements ListADT<E>{
     
     private int size; 	//size
-    private static final int DEFAULT_CAPACITY = 25;
-    //private int list.length = DEFAULT_CAPACITY;
-    private E[] list = (E[])new Object[DEFAULT_CAPACITY];
+    private static final int INITIAL_CAPACITY = 25;
+    //private int list.length = INITIAL_CAPACITY;
+    private E[] list = (E[])new Object[INITIAL_CAPACITY];
     
     /**
      * Default constructor
@@ -33,7 +33,7 @@ public class MyArrayList <E> implements ListADT<E>{
      */
     public MyArrayList(int initial_capacity)
     {
-    	E[] list = (E[])new Object[DEFAULT_CAPACITY];
+    	E[] list = (E[])new Object[INITIAL_CAPACITY];
     } 
     
     
@@ -51,7 +51,7 @@ public class MyArrayList <E> implements ListADT<E>{
 	@Override
 	public void clear() 
 	{
-	    E[] tempList = (E[])new Object[DEFAULT_CAPACITY];
+	    E[] tempList = (E[])new Object[INITIAL_CAPACITY];
 	    list = tempList;
 	    size = 0;
 	}
