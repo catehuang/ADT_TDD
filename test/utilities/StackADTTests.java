@@ -93,13 +93,13 @@ public class StackADTTests<E> extends MyStack<E> {
 		assertEquals(1, myStack.size());
 		assertEquals("a", myStack.peek());
 	}
-	
-	@Test 
+
+	@Test
 	public void testPeek() {
 		try {
 			myStack.peek();
 			fail("Peek method failded to throw EmptyStackException.");
-		}catch(EmptyStackException e) {
+		} catch (EmptyStackException e) {
 			assertTrue(true);
 		}
 		myStack.push("a");
@@ -110,22 +110,22 @@ public class StackADTTests<E> extends MyStack<E> {
 		myStack.pop();
 		assertEquals("b", myStack.peek());
 		assertEquals(2, myStack.size());
-		
+
 	}
-	
+
 	@Test
 	public void testSearch() {
 		try {
 			myStack.search("a");
 			fail("Search method failed to throw EmptyStackException.");
-		}catch(EmptyStackException e) {
+		} catch (EmptyStackException e) {
 			assertTrue(true);
 		}
 		try {
 			myStack.push(1);
 			myStack.search(null);
 			fail("Search method failed to throw NullPointerException.");
-		}catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			assertTrue(true);
 		}
 		myStack.clear();
@@ -140,23 +140,23 @@ public class StackADTTests<E> extends MyStack<E> {
 		myStack.push("a");
 		assertEquals(4, myStack.search("a"));
 	}
-	
+
 	@Test
 	public void testContains() {
 		try {
 			myStack.contains("a");
 			fail("Contains method failed to throw EmptyStackException.");
-		}catch(EmptyStackException e) {
+		} catch (EmptyStackException e) {
 			assertTrue(true);
 		}
 		try {
 			myStack.push(1);
 			myStack.contains(null);
 			fail("Contains method failed to throw NullPointerException.");
-		}catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			assertTrue(true);
 		}
-		
+
 		myStack.push("a");
 		myStack.push("b");
 		assertTrue(myStack.contains("a"));
@@ -166,4 +166,52 @@ public class StackADTTests<E> extends MyStack<E> {
 		assertFalse(myStack.contains(5));
 
 	}
+
+	@Test
+	public void testIsEmpty() {
+		assertTrue(myStack.isEmpty());
+		assertEquals(0, myStack.size());
+	}
+
+	@Test
+	public void testToArrayToCopy() {
+		// to test public E[] toArray(E[] toHold) throws NullPointerException method.
+		try {
+			myStack.toArray(null);
+			fail("Contains method failed to throw NullPointerException.");
+		} catch (NullPointerException e) {
+			assertTrue(true);
+		}
+		Object[] toHold = new Object[5];
+		toHold[0] = "a";
+		toHold[1] = "b";
+		toHold[2] = "c";
+		toHold[3] = "d";
+		toHold[4] = 5;
+		E[] copyArray = (E[]) myStack.toArray(toHold);			
+		// The top of the stack corresponds to the first element of the array
+		assertEquals(5, copyArray[0]);
+		assertEquals("d", copyArray[1]);
+		assertEquals("c", copyArray[2]);
+		assertEquals("b", copyArray[3]);
+		assertEquals("a", copyArray[4]);
+	}
+	
+	@Test
+	public void testToArray() {
+		assertNull(myStack.toArray());
+		myStack.push("a");
+		myStack.push("b");
+		myStack.push("c");
+		myStack.push("d");
+		myStack.push("e");
+		Object[] copyArray = myStack.toArray();
+		assertEquals("e", copyArray[0]);
+		assertEquals("d", copyArray[1]);
+		assertEquals("c", copyArray[2]);
+		assertEquals("b", copyArray[3]);
+		assertEquals("a", copyArray[4]);
+	}
+	
+
 }

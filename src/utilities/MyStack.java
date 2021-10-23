@@ -175,6 +175,9 @@ public class MyStack<E> implements StackADT<E> {
 	 */
 	@Override
 	public E[] toArray(E[] toHold) throws NullPointerException {
+		if(toHold == null) {
+			throw new NullPointerException();
+		}
 		if (toHold.length > arrayStack.length) {
 			// need to resize the backing array
 			arrayStack = Arrays.copyOf(arrayStack, 2 * arrayStack.length);// double the array length
@@ -182,6 +185,7 @@ public class MyStack<E> implements StackADT<E> {
 		for (int i = 0, j = toHold.length - 1; i < toHold.length; i++, j--) {
 			// The top of the stack corresponds to the first element of the array
 			arrayStack[j] = toHold[i];
+		
 		}
 		return arrayStack;
 	}
@@ -196,9 +200,9 @@ public class MyStack<E> implements StackADT<E> {
 		if (isEmpty()) {
 			return null;
 		}
-		Object[] o = new Object[arrayStack.length];
-		for (int i = 0; i < arrayStack.length; i++) {
-			o[i] = arrayStack[i];
+		Object[] o = new Object[top];
+		for (int i = 0, j = top - 1; i < top; i++, j--) {
+		o[i] = arrayStack[j];
 		}
 		return o;
 	}
