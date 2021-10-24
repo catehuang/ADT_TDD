@@ -18,6 +18,7 @@ public class MyQueue<E> implements QueueADT<E>
 	public void create() 
 	{
 		myDll = new MyDLL();
+		length = 0;
 	}
 
 	/**

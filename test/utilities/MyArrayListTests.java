@@ -167,10 +167,10 @@ public class MyArrayListTests<E> {
 		
 		assertEquals(3, this.myList.size());
 		assertEquals("WINE", this.myList.get(0));
-		assertEquals("WHITE WIN", this.myList.get(1));
+		assertEquals("WHITE WINE", this.myList.get(1));
 		assertEquals("BEER", this.myList.get(2));
 		
-		this.myList.remove("a");
+		this.myList.remove("WHITE WINE");
 		// b c
 		assertEquals(2, this.myList.size());
 		assertEquals("WINE", this.myList.get(0));
@@ -198,10 +198,10 @@ public class MyArrayListTests<E> {
 	@Test
 	public void testSet()
 	{
-		this.myList.add("CHAIR");
-		this.myList.add("DINING DESK");
-		this.myList.add("TABLE CLOTH");
-		this.myList.add("DINNER NAPKIN");
+		this.myList.add("a");
+		this.myList.add("b");
+		this.myList.add("c");
+		this.myList.add("d");
 
 		try 
 		{
@@ -224,7 +224,7 @@ public class MyArrayListTests<E> {
 		}
 		
 		// x b c d
-		this.myList.set(0, "TRAY");
+		this.myList.set(0, "x");
 		assertEquals(4, this.myList.size());
 		assertEquals("x", this.myList.get(0));
 		assertEquals("b", this.myList.get(1));
