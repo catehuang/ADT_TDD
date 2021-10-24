@@ -175,7 +175,7 @@ public class MyStack<E> implements StackADT<E> {
 	 */
 	@Override
 	public E[] toArray(E[] toHold) throws NullPointerException {
-		if(toHold == null) {
+		if (toHold == null) {
 			throw new NullPointerException();
 		}
 		if (toHold.length > arrayStack.length) {
@@ -185,7 +185,7 @@ public class MyStack<E> implements StackADT<E> {
 		for (int i = 0, j = toHold.length - 1; i < toHold.length; i++, j--) {
 			// The top of the stack corresponds to the first element of the array
 			arrayStack[j] = toHold[i];
-		
+
 		}
 		return arrayStack;
 	}
@@ -202,7 +202,7 @@ public class MyStack<E> implements StackADT<E> {
 		}
 		Object[] o = new Object[top];
 		for (int i = 0, j = top - 1; i < top; i++, j--) {
-		o[i] = arrayStack[j];
+			o[i] = arrayStack[j];
 		}
 		return o;
 	}
@@ -226,8 +226,8 @@ public class MyStack<E> implements StackADT<E> {
 
 		@Override
 		public boolean hasNext() {
-
-			return current < size();
+			;
+			return current < top;
 		}
 
 		@Override
@@ -249,11 +249,11 @@ public class MyStack<E> implements StackADT<E> {
 	 */
 	@Override
 	public boolean equals(StackADT<E> that) {
-		if (that.size() == arrayStack.length) {
-			for (int i = 0; i < arrayStack.length; i++) {
-				if (arrayStack[i] != that.toArray()[i])
+		if (that.size() == top) {
+			E[] thatArray = (E[]) that.toArray();
+			for (int i = top - 1, j = 0; i >= 0; i--, j++) {
+				if (!arrayStack[i].equals(thatArray[j]))
 					return false;
-
 			}
 			return true;
 		} else

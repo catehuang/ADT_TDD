@@ -6,6 +6,7 @@ import java.util.EmptyStackException;
 
 import org.junit.*;
 
+import adts.Iterator;
 import utilities.MyStack;
 
 public class StackADTTests<E> extends MyStack<E> {
@@ -171,6 +172,10 @@ public class StackADTTests<E> extends MyStack<E> {
 	public void testIsEmpty() {
 		assertTrue(myStack.isEmpty());
 		assertEquals(0, myStack.size());
+		myStack.push("A");
+		assertTrue(!myStack.isEmpty());
+		assertEquals(1, myStack.size());
+
 	}
 
 	@Test
@@ -188,7 +193,7 @@ public class StackADTTests<E> extends MyStack<E> {
 		toHold[2] = "c";
 		toHold[3] = "d";
 		toHold[4] = 5;
-		E[] copyArray = (E[]) myStack.toArray(toHold);			
+		E[] copyArray = (E[]) myStack.toArray(toHold);
 		// The top of the stack corresponds to the first element of the array
 		assertEquals(5, copyArray[0]);
 		assertEquals("d", copyArray[1]);
@@ -196,7 +201,7 @@ public class StackADTTests<E> extends MyStack<E> {
 		assertEquals("b", copyArray[3]);
 		assertEquals("a", copyArray[4]);
 	}
-	
+
 	@Test
 	public void testToArray() {
 		assertNull(myStack.toArray());
@@ -212,6 +217,52 @@ public class StackADTTests<E> extends MyStack<E> {
 		assertEquals("b", copyArray[3]);
 		assertEquals("a", copyArray[4]);
 	}
-	
 
+	@Test
+	public void testIterator() {
+		myStack.push("a");
+		myStack.push("b");
+		myStack.push("c");
+		myStack.push("d");
+		myStack.push("e");
+
+		Object[] o = new Object[myStack.size()];
+		Iterator<E> myStackIterator = myStack.iterator();
+		
+		int i = 0;
+		while (myStackIterator.hasNext()) {
+			o[i] = myStackIterator.next();
+			i++;
+		}
+
+		assertEquals("a", o[0]);
+		assertEquals("b", o[1]);
+		assertEquals("c", o[2]);
+		assertEquals("d", o[3]);
+		assertEquals("e", o[4]);
+	}
+	
+	@Test 
+	public void testEquals() {
+		myStack.push("a");
+		myStack.push("b");
+		myStack.push("c");
+		myStack.push("d");
+		myStack.push("e");
+		
+		MyStack otherStack = new MyStack();
+		otherStack.push("a");
+		otherStack.push("b");
+		otherStack.push("c");
+		otherStack.push("d");
+		otherStack.push("e");
+		
+		assertTrue(myStack.equals(otherStack));
+		otherStack.pop();
+		assertFalse(myStack.equals(otherStack));
+		otherStack.push("f");
+		assertFalse(myStack.equals(otherStack));
+		
+		
+	}
 }
