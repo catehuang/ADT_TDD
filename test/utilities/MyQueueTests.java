@@ -1,14 +1,13 @@
 package utilities;
 import org.junit.Test;
-import utilities.MyQueue;
 import static org.junit.Assert.*;
-import org.junit.*;
+
 
 
 import org.junit.After;
 import org.junit.Before;
 
-public class MyQueueTests<E> extends MyQueue<E> {
+public class MyQueueTests<E> {
 	private MyQueue myQueue;
 
 	
@@ -33,7 +32,57 @@ public class MyQueueTests<E> extends MyQueue<E> {
 
 	@Test
 	public void testCreate() {
-		super.create();
-		assertEquals(0, this.size());
+
+		assertEquals(0, myQueue.size());
+	}
+
+	@Test
+	public void testEnqueue() {
+
+	}
+
+	@Test
+	public void testDequeue() {
+
+	}
+
+	@Test
+	public void testPeek() {
+
+	}
+
+	@Test
+	public void testEquals() {
+
+	}
+
+	@Test
+	public void testIterator() {
+
+	}
+
+	@Test
+	public void testToArray() {
+
+	}
+
+	@Test
+	public void testIsFull() {
+
+	}
+
+	@Test
+	public void testSize() {
+
+	}
+
+	@Test
+	public void testIsEmpty() {
+
+	}
+
+	@Test
+	public void testDequueAll() {
+
 	}
 }
