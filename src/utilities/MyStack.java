@@ -226,7 +226,7 @@ public class MyStack<E> implements StackADT<E> {
 
 		@Override
 		public boolean hasNext() {
-			;
+			
 			return current < top;
 		}
 

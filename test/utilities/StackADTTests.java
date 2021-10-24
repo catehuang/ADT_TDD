@@ -7,9 +7,9 @@ import java.util.EmptyStackException;
 import org.junit.*;
 
 import adts.Iterator;
-import utilities.MyStack;
 
-public class StackADTTests<E> extends MyStack<E> {
+
+public class StackADTTests<E> {
 
 	private MyStack myStack;
 
@@ -32,8 +32,13 @@ public class StackADTTests<E> extends MyStack<E> {
 
 	@Test
 	public void testCreate() {
-		super.create();
-		assertEquals(0, this.size());
+		
+		try {
+			myStack.create();
+			assertTrue(true);
+		}catch(Exception e) {
+			fail("Create Method failed");
+		}
 
 	}
 
