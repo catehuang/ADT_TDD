@@ -423,15 +423,20 @@ public class MyDLL<E> implements ListADT<E>
 		@Override
 		public boolean hasNext() 
 		{
-			return curr.getNext() != null;
+			return curr != null;
 		}
 
 		@Override
 		public E next() throws NoSuchElementException 
 		{
-			E info = (E) curr.getElement();
-			tail = curr.getNext();
-			return info;
+			if (!hasNext())
+			{
+				throw new NoSuchElementException();
+			}
+			
+			E tmp = (E) curr.getElement();
+			curr = curr.getNext();
+			return tmp;
 		}
     }
 }
