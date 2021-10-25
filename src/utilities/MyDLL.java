@@ -21,6 +21,7 @@ public class MyDLL<E> implements ListADT<E>
 	 */
 	public MyDLL()
 	{
+		new MyDLLNode();
 		this.head = this.tail = null;
 	}
 
@@ -168,16 +169,16 @@ public class MyDLL<E> implements ListADT<E>
 	@Override
 	public E get(int index) throws IndexOutOfBoundsException 
 	{
+		if (isEmpty())
+		{
+			return null;
+		} 
+		
 		if (index > size - 1 || index < 0)
 		{
 			throw new IndexOutOfBoundsException ("Index " + index + ", Size: " + size);
 		}
 		
-		if (isEmpty())
-		{
-			return null;
-		} 
-
 		MyDLLNode<E> curr = head;
 
 		for (int i = 0; i < index; i++)

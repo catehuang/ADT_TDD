@@ -19,9 +19,7 @@ public class MyQueueTests<E> {
 	public void setUp() throws Exception
 	{
 		this.myQueue = new MyQueue();
-		this.myQueue.create();
 		this.myQueue2 = new MyQueue();
-		this.myQueue2.create();
 
 	}
 
@@ -37,6 +35,14 @@ public class MyQueueTests<E> {
 
 	@Test
 	public void testCreate() {
+		try {
+			myQueue.create();
+			assertTrue(true);
+		} 
+		catch(Exception e) 
+		{
+			fail("Create Method failed");
+		}
 		assertEquals(0, this.myQueue.size());
 		assertTrue("True", this.myQueue.isEmpty());
 	}

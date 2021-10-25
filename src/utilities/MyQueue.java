@@ -8,8 +8,12 @@ import adts.QueueADT;
 public class MyQueue<E> implements QueueADT<E> 
 {
 
-	private int length;
+	private int length = 0;
 	private MyDLL myDll;
+	
+	public MyQueue( ) {
+		create();
+	}
 	
 	/**
 	 * Creates an empty queue
@@ -18,7 +22,6 @@ public class MyQueue<E> implements QueueADT<E>
 	public void create() 
 	{
 		myDll = new MyDLL();
-		length = 0;
 	}
 
 	/**
