@@ -130,11 +130,11 @@ public class MyQueueTests<E> {
 		this.myQueue.enqueue("d");
 
 		Object[] o = new Object[myQueue.size()];
-		Iterator<E> myIterator = myQueue.iterator();
+		Iterator<E> myQueueIterator = myQueue.iterator();
 
 		int i = 0;
-		while(myIterator.hasNext()) {
-			o[i] = myIterator.next();
+		while(myQueueIterator.hasNext()) {
+			o[i] = myQueueIterator.next();
 			i++;
 		}
 
