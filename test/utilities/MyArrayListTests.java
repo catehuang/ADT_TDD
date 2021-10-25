@@ -4,6 +4,8 @@ package utilities;
 import static org.junit.Assert.*;
 import org.junit.*;
 
+import adts.Iterator;
+
 public class MyArrayListTests<E> {
 
 	private MyArrayList myList;
@@ -294,7 +296,24 @@ public class MyArrayListTests<E> {
 	@Test
 	public void testIterator()
 	{
+		this.myList.add("a");
+		this.myList.add("b");
+		this.myList.add("c");
+		this.myList.add("d");
 		
+		Object[] o = new Object[myList.size()];
+		Iterator<E> myListIterator = myList.iterator();
+		
+		int i = 0;
+		while (myListIterator.hasNext()) {
+			o[i] = myListIterator.next();
+			i++;
+		}
+
+		assertEquals("a", o[0]);
+		assertEquals("b", o[1]);
+		assertEquals("c", o[2]);
+		assertEquals("d", o[3]);
 	}
 
 
