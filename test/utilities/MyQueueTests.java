@@ -78,27 +78,6 @@ public class MyQueueTests<E> {
 
 	}
 
-	@Test
-	public void testIterator() {
-		this.myQueue.enqueue("a");
-		this.myQueue.enqueue("b");
-		this.myQueue.enqueue("c");
-		this.myQueue.enqueue("d");
-
-		Object[] o = new Object[myQueue.size()];
-		Iterator<E> myIterator = myQueue.iterator();
-
-		int i = 0;
-		while(myIterator.hasNext()) {
-			o[i] = myIterator.next();
-			i++;
-		}
-
-		assertEquals("a", o[0]);
-		assertEquals("b", o[1]);
-		assertEquals("c", o[2]);
-		assertEquals("d", o[3]);
-	}
 
 	@Test
 	public void testToArray() {
@@ -141,5 +120,27 @@ public class MyQueueTests<E> {
 		this.myQueue.dequeueAll();
 		assertTrue(this.myQueue.isEmpty());
 		assertEquals(0, this.myQueue.size());
+	}
+
+	@Test
+	public void testIterator() {
+		this.myQueue.enqueue("a");
+		this.myQueue.enqueue("b");
+		this.myQueue.enqueue("c");
+		this.myQueue.enqueue("d");
+
+		Object[] o = new Object[myQueue.size()];
+		Iterator<E> myIterator = myQueue.iterator();
+
+		int i = 0;
+		while(myIterator.hasNext()) {
+			o[i] = myIterator.next();
+			i++;
+		}
+
+		assertEquals("a", o[0]);
+		assertEquals("b", o[1]);
+		assertEquals("c", o[2]);
+		assertEquals("d", o[3]);
 	}
 }
