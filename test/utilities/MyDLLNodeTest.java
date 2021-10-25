@@ -42,10 +42,22 @@ public class MyDLLNodeTest<E> {
     }
 
     @Test
+    public void testSetPrev() {
+        this.myDLLNode.setPrev(myDLLNode2);
+        assertEquals(myDLLNode2, myDLLNode.getPrev());
+    }
+
+    @Test
     public void testGetPrev() {
 
         this.myDLLNode.setPrev(myDLLNode2);
         assertEquals(myDLLNode2, myDLLNode.getPrev());
+    }
+
+    @Test
+    public void testSetNext() {
+        this.myDLLNode.setNext(myDLLNode2);
+        assertEquals(myDLLNode2, myDLLNode.getNext());
     }
 
     @Test
