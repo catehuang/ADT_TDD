@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 
 import adts.Iterator;
 import adts.QueueADT;
+import exceptions.EmptyQueueException;
 
 public class MyQueue<E> implements QueueADT<E> 
 {
@@ -28,16 +29,25 @@ public class MyQueue<E> implements QueueADT<E>
 	 * Adds an element to the rear of the queue
 	 */
 	@Override
-	public void enqueue(E element) 
+	public E enqueue(E element) throws NullPointerException
 	{
+		if(element == null || element.equals(""))
+		{
+			throw new NullPointerException("Added element cannot be a null.");
+		}
 		myDll.add(element);
+		return element;
 	}
 
 	/**
 	 * Removes the first element of the queue
 	 */
 	@Override
-	public E dequeue() {
+	public E dequeue() throws EmptyQueueException {
+		if (myDll.isEmpty())
+		{
+			throw new EmptyQueueException("Queue is empty. Nothing to dequeue.");
+		}
 		return (E) myDll.remove(0);
 	}
 
@@ -45,15 +55,14 @@ public class MyQueue<E> implements QueueADT<E>
 	 * Returns the element at the front of this queue
 	 */
 	@Override
-	public E peek() {
+	public E peek() throws EmptyQueueException {
 		if (isEmpty())
 		{
-			return null;
+			throw new EmptyQueueException("Queue is empty.");
 		}
-		else
-		{
-			return (E) myDll.get(0);
-		}	
+
+		return (E) myDll.get(0);
+		
 	}
 
 	/**
@@ -104,7 +113,10 @@ public class MyQueue<E> implements QueueADT<E>
 	 * Returns an array containing all of the items in this queue
 	 */
 	@Override
-	public E[] toArray(E[] copy) {
+	public E[] toArray(E[] copy) throws NullPointerException {
+		if (copy.length == 0) {
+			throw new NullPointerException("Cannot convert empty array.");
+		}
 		return (E[]) myDll.toArray(copy);
 	}
 

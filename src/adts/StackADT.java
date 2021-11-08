@@ -1,11 +1,14 @@
 package adts;
 
+import java.io.Serializable;
+import java.util.EmptyStackException;
+
 import utilities.MyStack;
 
 /**
  * Requirements (from M5-StacksQueues page 3, 10)
  */
-public interface StackADT<E> {
+public interface StackADT<E> extends Serializable {
 	
 	
 	/**
@@ -19,21 +22,21 @@ public interface StackADT<E> {
 	 * Adds the specified element to the top of this stack
 	 * @param element the element to be pushed onto stack
 	 */
-	public void push(E element);
+	public void push(E element) throws NullPointerException;
 	
 
 	/**
 	 * Returns the top element and removes it from this stack
 	 * @return the top element from this stack
 	 */
-	public E pop();
+	public E pop() throws EmptyStackException;
 	
 	
 	/**
 	 * Returns the top element of this stack
 	 * @return the element on the top of this stack
 	 */
-	public E peek();
+	public E peek() throws EmptyStackException;
 	
 	
 	/**
@@ -41,21 +44,21 @@ public interface StackADT<E> {
 	 * @param E a stack to compare to another stack
 	 * @return returns true if two stack must contain equal items appearing in the same order
 	 */
-	boolean equals(StackADT<E> that);
+	public boolean equals(StackADT<E> that);
 	
 	
 	/**
 	 * Returns an iterator over the items contained in this stack. The remove() should not be supported
 	 * @return returns an iterator over the items contained in this stack
 	 */
-	Iterator<E> iterator();
+	public Iterator<E> iterator();
 	
 	
 	/**
 	 * Returns an array containing all of the items in this stack
 	 * @return returns an array containing all of the items in this stack
 	 */
-	Object[] toArray();
+	public Object[] toArray();
 	
 	
 	/**
@@ -63,7 +66,7 @@ public interface StackADT<E> {
 	 * @param copy an array is going to make a copy
 	 * @return returns an array containing all of the items in this stack
 	 */
-	E[] toArray(E[] copy);
+	public E[] toArray(E[] copy) throws NullPointerException;
 	
 	
 	/**
@@ -71,7 +74,7 @@ public interface StackADT<E> {
 	 * @param obj the searched element
 	 * @return the index of obj
 	 */
-	int search(E obj);
+	public int search(E obj);
 	
 	
 	/**
@@ -85,7 +88,7 @@ public interface StackADT<E> {
 	 * Returns true if this stack is empty
 	 * @return true if this stack is empty
 	 */
-	boolean isEmpty();
+	public boolean isEmpty();
 	
 	
 	/**
@@ -99,7 +102,7 @@ public interface StackADT<E> {
 	 * @param obj the searched element
 	 * @return returns true if this stack contains specified obj
 	 */
-	boolean contains(E obj);
+	public boolean contains(E obj) throws NullPointerException;
 	
 	
 }

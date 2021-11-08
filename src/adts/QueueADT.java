@@ -1,9 +1,15 @@
 package adts;
 
+import java.io.Serializable;
+
+import exceptions.EmptyQueueException;
+
+
+
 /**
  * Requirements (from M5-StacksQueues page 19, 23)
  */
-public interface QueueADT<E> {
+public interface QueueADT<E> extends Serializable {
 	
 	/**
 	 * creates an empty queue
@@ -14,21 +20,21 @@ public interface QueueADT<E> {
 	 * Adds one element to the rear of this queue
 	 * @param element the element to be added to the rear of the queue
 	 */
-	public void enqueue(E element);
+	public E enqueue(E element) throws NullPointerException;
 	
 	
 	/**
 	 * Removes and returns the element at the front of this queue
 	 * @return the element at the front of this queue
 	 */
-	public E dequeue();
+	public E dequeue() throws EmptyQueueException;
 	
 	
 	/**
 	 * Returns the element at the front of this queue
 	 * @return returns the element at the front of this queue
 	 */
-	public E peek();
+	public E peek() throws EmptyQueueException;
 
 	/**
 	 * Returns true if two queues contain equal items appearing in the same order
@@ -57,7 +63,7 @@ public interface QueueADT<E> {
 	 * @param copy the original queue 
 	 * @return returns an array containing all of the items in this queue
 	 */
-	public E[] toArray(E[] copy);
+	public E[] toArray(E[] copy) throws NullPointerException;
 	 
 	
 	/**

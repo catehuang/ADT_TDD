@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import adts.Iterator;
+import exceptions.EmptyQueueException;
 
 public class MyQueueTests<E> {
 	private MyQueue myQueue;
@@ -57,7 +58,12 @@ public class MyQueueTests<E> {
 		}
 
 		this.myQueue.enqueue("a");
-		assertEquals("a", this.myQueue.peek());
+		try {
+			assertEquals("a", this.myQueue.peek());
+		} catch (EmptyQueueException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		this.myQueue.enqueue("b");
 		this.myQueue.enqueue("c");
@@ -67,13 +73,23 @@ public class MyQueueTests<E> {
 	@Test
 	public void testDequeue() {
 		this.myQueue.enqueue("a");
-		assertEquals("a", this.myQueue.dequeue());
+		try {
+			assertEquals("a", this.myQueue.dequeue());
+		} catch (EmptyQueueException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void testPeek() {
 		this.myQueue.enqueue("a");
-		assertEquals("a", this.myQueue.peek());
+		try {
+			assertEquals("a", this.myQueue.peek());
+		} catch (EmptyQueueException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
