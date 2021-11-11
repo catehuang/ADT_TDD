@@ -45,8 +45,7 @@ public class Parser {
 			{
 				// closing tag, whose tag name matches to opening tag
 				tag = line.split("</")[1].split(">")[0];
-				//System.out.println("Tag: " + tag);
-				//System.out.println(getTagName(line) + " vs " + getTagName((String) mystack.peek()));
+
 				if (mystack.isEmpty())
 				{
 					errorQ.enqueue(line);

@@ -28,6 +28,7 @@ public class Driver {
 			else
 			{
 				System.out.println("Parse for errors in the XML construction...");
+				System.out.println();
 				Parser parser = new Parser(xmlPath);
 			}
 		}
